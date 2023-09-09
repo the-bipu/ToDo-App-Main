@@ -1,10 +1,8 @@
 import React, { useState } from "react";
-import isChecked from './Main';
-import handleCheckboxChange from './Main';
 
 function CreateArea(props) {
 
-  const { dark, toggleDarkMode } = props;
+  const { dark, toggleDarkMode, isChecked, handleCheckboxChange } = props;
 
   const [note, setNote] = useState({
     title: "",
@@ -28,11 +26,20 @@ function CreateArea(props) {
       });
     event.preventDefault();
 
+    // function submitNote() {
+    //   if (note.title.trim() !== "") {
+    //     props.onAdd(note);
+    //     setNote({
+    //       title: "",
+    //     });
+    //   }
+    // }
+
   }
 
   return (
       <div className={`input--field ${dark ? "input--field-dark" : ""}`}>
-        <input type="text" className="checkbox--label main-button" name="checkbox--main" onClick={submitNote} /> 
+        <button type="submit" className="checkbox--label main-button" name="checkbox--main" onClick={submitNote} /> 
         &nbsp;
         <input type="text" className={`input--Main ${dark ? "input--Main-dark" : ""}`} placeholder="Create a new todo..." onChange={handleChange} value={note.title} name="title" autoComplete="off" />
       </div>

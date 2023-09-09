@@ -27,9 +27,14 @@ export default function Main(){
     const [notes, setNotes] = React.useState([]);
 
     function addNote(newNote) {
-        setNotes(prevNotes => {
-        return [...prevNotes, newNote];
-        });
+        if (newNote.title.trim() !== "") {
+            setNotes(prevNotes => {
+                return [...prevNotes, newNote];
+            });
+        }
+        // setNotes(prevNotes => {
+        // return [...prevNotes, newNote];
+        // });
     }
 
     function deleteNote(id) {
