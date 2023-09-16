@@ -1,7 +1,7 @@
-import React from "react";
-import { useEffect } from "react";
-import Note from "./Note";
-import CreateArea from "./CreateArea";
+import React, { useEffect } from "react";
+
+import Note from "../components/Note";
+import CreateArea from "../components/CreateArea";
 
 export default function Main(){
 
@@ -23,7 +23,6 @@ export default function Main(){
 
 
     // Working Models
-
     const [notes, setNotes] = React.useState([]);
 
     function addNote(newNote) {
@@ -32,9 +31,6 @@ export default function Main(){
                 return [...prevNotes, newNote];
             });
         }
-        // setNotes(prevNotes => {
-        // return [...prevNotes, newNote];
-        // });
     }
 
     function deleteNote(id) {
@@ -57,29 +53,8 @@ export default function Main(){
 
             <CreateArea onAdd={addNote} dark={dark} toggleDarkMode={toggleDarkMode} />
 
-            {/* <div className={`input--field ${dark ? "input--field-dark" : ""}`}>
-                <input type="text" className="checkbox--label main-button" name="checkbox--main" checked={isChecked} onChange={handleCheckboxChange} /> 
-                &nbsp;
-                <input type="text" className={`input--Main ${dark ? "input--Main-dark" : ""}`} placeholder="Create a new todo..." />
-            </div> */}
-
-            {/* <div className={`div-main ${dark ? "div-main-dark" : ""}`}>
-                &nbsp;
-                <input type="checkbox" className={`checkbox--label ${isChecked ? "checked--Input" : ""}`} name="checkbox--tasks" checked={isChecked} onChange={handleCheckboxChange} /> 
-                
-                <div className="div--tasks">
-                    Complete Todo App on Frontend Mentor
-                </div>
-            </div>
-
-            <div className={`div-main ${dark ? "div-main-dark" : ""}`}>
-                &nbsp;
-                <input type="checkbox" className={`checkbox--label ${isChecked ? "checked--Input" : ""}`} name="checkbox--tasks" checked={isChecked} onChange={handleCheckboxChange} /> 
-                
-                <div className="div--tasks">
-                    Complete Todo App on Frontend Mentor
-                </div>
-            </div> */}
+            <Note id={1} title={"Complete the To-Do-App Project"} />
+            <Note id={2} title={"Adding Backend to the To-Do-App Project"} />
 
             <div>
                 {notes.map((noteItem, index) => {
