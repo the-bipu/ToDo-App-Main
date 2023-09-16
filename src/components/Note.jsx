@@ -17,8 +17,8 @@ function Note(props) {
           {title}
       </div>
 
-      <button onClick={handleClick}>
-        Delete
+      <button className="button__delete" onClick={handleClick}>
+        <img className="cross__icon" src="../../assets/images/icon-cross.svg" alt="cross icon" />
       </button>
     </div>
   );
