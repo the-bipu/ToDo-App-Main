@@ -119,7 +119,12 @@ body {
     border-bottom: 1px solid hsl(233, 11%, 84%);
 }
 
-.div-main:first-child {
+/* .div-main:first-child {
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+} */
+
+.unique:first-child {
     border-top-left-radius: 5px;
     border-top-right-radius: 5px;
 }
@@ -136,6 +141,11 @@ body {
 
 .completed--task {
     text-decoration: line-through;
+    color: hsl(233, 14%, 35%);
+}
+
+.note {
+    transition: transform 0.2s ease;
 }
 
 .button__delete {
@@ -292,12 +302,20 @@ body {
     color: hsl(234, 39%, 85%);
 }
 
+.completed--task--dark {
+    text-decoration: line-through;
+    color: hsl(234, 39%, 85%);
+}
+
 .all--dark:hover,
 .active--dark:hover,
 .complete--dark:hover,
 .clean--con--dark:hover {
     color: hsl(0, 0%, 98%);
 }
+
+/* Media Queries */
+
 
 
 /* Colors for light theme */
