@@ -2,7 +2,9 @@ import React, { useState } from "react";
 
 function CreateArea(props) {
 
-  const { dark, toggleDarkMode, isChecked, handleCheckboxChange } = props;
+  const {onAdd, dark, toggleDarkMode, isChecked, handleCheckboxChange } = props;
+
+  const [message, setMessage] = useState('');
 
   const [note, setNote] = useState({
     title: "",
@@ -30,6 +32,12 @@ function CreateArea(props) {
       });
     event.preventDefault();
 
+  }
+
+    const handleSubmit = (e) => {
+      e.preventDefault();
+      onAdd({ title: message });
+      setMessage('');
   }
 
   return (
