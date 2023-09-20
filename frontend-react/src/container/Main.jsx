@@ -31,8 +31,6 @@ export default function Main(){
     const [notes, setNotes] = useState([]);
     const [isChecked, setIsChecked] = useState({}); // Change to an object instead of a boolean
     
-    // const length = notes.filter(note => !note.isChecked).length;
-    // const [uncheckedNotesCount, setUncheckedNotesCount] = useState(length);
     const [uncheckedNotesCount, setUncheckedNotesCount] = useState(
         notes.filter(note => !note.isChecked).length
     );
@@ -133,30 +131,55 @@ export default function Main(){
             .commit()
             .then(() => {
                 console.log(`Successfully updated isChecked for document with ID ${documentId} in Sanity.`);
-                
-                // Update the unchecked notes count
-                const newUncheckedNotesCount = notes.filter(note => !note.isChecked).length;
-                setUncheckedNotesCount(newUncheckedNotesCount);
-                
                 handleSectionToggle(activeSection);
-                
-                setNotes(prevNotes => {
-                    return prevNotes.map(note => {
-                        if (note.id === id) {
-                            return { ...note, isChecked: !isChecked[id] };
-                        } else {
-                            return note;
-                        }
-                    });
-                });
+
+                console.log(isChecked[id]);
+
+                if(isChecked[id]) { setUncheckedNotesCount(prevCount => prevCount + 1); }
+                else {  setUncheckedNotesCount(prevCount => prevCount - 1); }
+
+                // Working code don't remove
+                setNotes(prevNotes => prevNotes.map(note => 
+                    note.id === id ? { ...note, isChecked: !isChecked[id] } : note
+                ));
+
+                // Use this for sending the checked and unchecked data at the last of the list
+                // setNotes(prevNotes => {
+                //     const updatedNotes = prevNotes.map(note => 
+                //         note.id === id ? { ...note, isChecked: !isChecked[id] } : note
+                //     );
+
+                //     // Move the unchecked item to the end of the list
+                //     const uncheckedItem = updatedNotes.find(note => note.id === id);
+                //     const updatedList = updatedNotes.filter(note => note.id !== id);
+                //     updatedList.push(uncheckedItem);
+
+                //     return updatedList;
+                // });
+
+                // Use this for sending only the checked data to the end
+                // const wasChecked = isChecked[id];
+                // setNotes(prevNotes => {
+                //     const updatedNotes = prevNotes.map(note => 
+                //         note.id === id ? { ...note, isChecked: !isChecked[id] } : note
+                //     );
+    
+                //     if (wasChecked) {
+                //         // Move the unchecked item to the end of the list
+                //         const uncheckedItem = updatedNotes.find(note => note.id === id);
+                //         const updatedList = updatedNotes.filter(note => note.id !== id);
+                //         updatedList.push(uncheckedItem);
+    
+                //         return updatedList;
+                //     } else {
+                //         return updatedNotes;
+                //     }
+                // });
             })
             .catch(error => {
                 console.error('Error updating isChecked in Sanity:', error);
             });
     }
-
-    // count of unchecked data
-    // const uncheckedNotesCount = notes.filter(note => !note.isChecked).length;
 
     // function for deletion
     function deleteNote(id) {
@@ -164,6 +187,7 @@ export default function Main(){
             const updatedNotes = prevNotes.filter((noteItem, index) => index !== id);
             return updatedNotes;
         });
+
         // setNotes(prevNotes => {
         //     return prevNotes.filter((noteItem, index) => {
         //         console.log("This is from the delete section : " + index + " " + id);
@@ -178,30 +202,43 @@ export default function Main(){
             .delete(documentId)
             .then(() => {
                 console.log(`Successfully deleted document with ID ${id} from Sanity.`);
+
+                setUncheckedNotesCount(prevCount => prevCount - 1);
+
+                setNotes(prevNotes => prevNotes.map(note => 
+                    note.id === id ? { ...note, isChecked: !isChecked[id] } : note
+                ));
             })
             .catch(error => {
                 console.error('Error deleting document from Sanity:', error);
             });
     }
 
-    // Inside your Main component
-    const clearCompleted = (_id) => {
+    const clearCompleted = () => {
         const completedNotes = notes.filter(note => note.isChecked);
-        console.log("triggered!");
+    
         completedNotes.forEach(note => {
             const documentId = note._id;
+    
             client
                 .delete(documentId)
                 .then(() => {
                     console.log(`Successfully deleted completed document with ID ${note.id} from Sanity.`);
+
+                    // Update the local state after deletion
                     setNotes(prevNotes => prevNotes.filter(n => n._id !== note._id));
-                    console.log("done!");
+                    setIsChecked(prev => {
+                        const newState = { ...prev };
+                        delete newState[note.id];
+                        return newState;
+                    });
                 })
                 .catch(error => {
                     console.error('Error deleting document from Sanity:', error);
                 });
         });
     }
+    
 
     return (
         <div className="container">
