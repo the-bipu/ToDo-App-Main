@@ -1,4 +1,6 @@
 import React, { useState, useEffect } from "react";
+import { DndProvider } from 'react-dnd';
+import { HTML5Backend } from 'react-dnd-html5-backend';
 import { v4 as uuidv4 } from 'uuid';
 
 import Note from "../components/Note";
@@ -238,6 +240,14 @@ export default function Main(){
                 });
         });
     }
+
+    const moveNote = (dragIndex, hoverIndex) => {
+        const dragNote = notes[dragIndex];
+        const updatedNotes = [...notes];
+        updatedNotes.splice(dragIndex, 1);
+        updatedNotes.splice(hoverIndex, 0, dragNote);
+        setNotes(updatedNotes);
+    };
     
 
     return (
@@ -256,7 +266,7 @@ export default function Main(){
             {/* <Note id={1} title={"Complete the To-Do-App Project"} />
             <Note id={2} title={"Adding Backend to the To-Do-App Project"} /> */}
 
-            <div>
+            {/* <div>
                 {filteredNotes.map((noteItem, index) => {
                     return (
                     <Note
@@ -270,7 +280,25 @@ export default function Main(){
                     />
                     );
                 })}
-            </div>
+            </div> */}
+
+            <DndProvider backend={HTML5Backend}>
+                <div>
+                    {filteredNotes.map((noteItem, index) => (
+                        <Note
+                            key={index}
+                            index={index}
+                            id={noteItem.id}
+                            title={noteItem.title}
+                            onDelete={deleteNote}
+                            dark={dark}
+                            isChecked={isChecked}
+                            handleCheckboxChange={handleCheckboxChange}
+                            moveNote={moveNote}
+                        />
+                    ))}
+                </div>
+            </DndProvider>
 
             <div className={`footer-main ${dark ? "footer-main--dark" : ""}`}>
                 <div className="items--con">
