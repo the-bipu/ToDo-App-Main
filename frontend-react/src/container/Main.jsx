@@ -6,6 +6,8 @@ import { v4 as uuidv4 } from 'uuid';
 import Note from "../components/Note";
 import CreateArea from "../components/CreateArea";
 
+import './Main.scss';
+
 import { client } from '../client';
 
 export default function Main(){
@@ -16,10 +18,51 @@ export default function Main(){
         setDark(!dark);
     }
 
+    // useEffect(() => {
+    //     document.body.style.backgroundColor = dark ? 'hsl(235, 21%, 11%)' : 'hsl(236, 33%, 92%)';
+    //     document.body.style.backgroundImage = dark ? 'url(./assets/images/bg-desktop-dark.jpg)' : 'url(./assets/images/bg-desktop-light.jpg)';
+    //   }, [dark]);
+
     useEffect(() => {
-        document.body.style.backgroundColor = dark ? 'hsl(235, 21%, 11%)' : 'hsl(236, 33%, 92%)';
-        document.body.style.backgroundImage = dark ? 'url(./assets/images/bg-desktop-dark.jpg)' : 'url(./assets/images/bg-desktop-light.jpg)';
-      }, [dark]);
+        const mediaQuery = window.matchMedia("(max-width: 600px)");
+    
+        const applyDarkStyles = () => {
+            document.body.style.backgroundImage = dark ? 'url(./assets/images/bg-desktop-dark.jpg)' : '';
+            document.body.style.backgroundColor = dark ? 'hsl(235, 21%, 11%)' : 'hsl(236, 33%, 92%)';
+            document.body.style.backgroundRepeat = 'no-repeat';
+            document.body.style.backgroundSize = '100% 44vh';
+        };
+
+        const applyMobileStyles = () => {
+            if (!dark) {
+                document.body.style.backgroundImage = dark 
+                    ? 'url(./assets/images/bg-mobile-dark.jpg)' 
+                    : 'url(./assets/images/bg-mobile-light.jpg)';
+                document.body.style.backgroundColor = dark ? 'hsl(235, 21%, 11%)' : 'hsl(236, 33%, 92%)';
+                // document.body.style.backgroundImage = 'url(./assets/images/bg-mobile-dark.jpg)';
+                document.body.style.backgroundRepeat = 'no-repeat';
+                document.body.style.backgroundSize = '100% 44vh';
+            }
+        };
+    
+        applyDarkStyles(); // Apply styles initially
+        applyMobileStyles();
+    
+        const mediaQueryListener = (event) => {
+            if (event.matches) {
+                applyDarkStyles();
+            } else {
+                applyMobileStyles();
+            }
+        };
+    
+        mediaQuery.addEventListener('change', mediaQueryListener);
+    
+        return () => {
+            mediaQuery.removeEventListener('change', mediaQueryListener);
+        };
+    }, [dark]);
+    
 
     
     // Usestates Needed
@@ -304,6 +347,7 @@ export default function Main(){
                 <div className="items--con">
                     {uncheckedNotesCount} items left
                 </div>
+
                 <div className="status--con">
 
                     <div className={`all ${dark ? "all--dark" : ""} 
@@ -332,9 +376,37 @@ export default function Main(){
                     </div>
 
                 </div>
-                <div className={`clear--con`} onClick={clearCompleted} >
+                
+                <div className={`clear--con ${dark ? "clear--con--dark" : ""}`} onClick={clearCompleted} >
                     Clear Completed
                 </div>
+            </div>
+
+            <div className={`status--con--mobile ${dark ? "status--con--mobile--dark" : ""}`}>
+                    <div className={`all ${dark ? "all--dark" : ""} 
+                                    ${activeSection === "All" ? "active--status--mobile" : ""}`} 
+                                    onClick={() => handleSectionToggle("All")}
+                    >
+                        All
+                    </div>
+                    
+                    &nbsp; &nbsp;
+
+                    <div className={`active ${dark ? "active--dark" : ""} 
+                                    ${activeSection === "Active" ? "active--status--mobile" : ""}`} 
+                                    onClick={() => handleSectionToggle("Active")}
+                    >
+                        Active
+                    </div>    
+                    
+                    &nbsp; &nbsp;
+
+                    <div className={`complete ${dark ? "complete--dark" : ""} 
+                                    ${activeSection === "Complete" ? "active--status--mobile" : ""}`} 
+                                    onClick={() => handleSectionToggle("Complete")}
+                    >
+                        Complete
+                    </div>
             </div>
 
             <div className="footer--last">
