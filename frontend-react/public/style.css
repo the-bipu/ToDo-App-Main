@@ -10,17 +10,18 @@ body {
     font-family: 'Josefin Sans', sans-serif;
     font-size: 18px;
 
-    width: 1440px;
-    height: 800px;
+    /* width: 1440px; */
+    /* height: 800px; */
+    width: 100vw;
+    height: auto;
 
     display: flex;
     justify-content: center;
 
     background-image: url(./assets/images/bg-desktop-light.jpg);
     background-repeat: no-repeat;
-    background-size: contain;
+    background-size: 100% 44vh;
 
-    /* background-color: hsl(0, 0%, 98%); */
     background-color: hsl(236, 33%, 92%);
 }
 
@@ -33,14 +34,33 @@ body {
     color: hsl(228, 45%, 44%); 
 }
 
-.container {
-    /* width: 37.5vw; */
-    width: 540px;
-    height: auto;
-    /* height: 64px; */
+.color--mode {
+    height: 32px;
+    width: 32px;
+
+    background: url(./assets/images/icon-moon.svg);
+    background-repeat: no-repeat;
+    background-position: center;
 }
 
-.navbar {
+.color--mode-dark {
+    background: url(./assets/images/icon-sun.svg);
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.note {
+    transition: transform 0.2s ease;
+}
+
+/* .container {
+    /* width: 37.5vw; */
+    /* width: 540px; */
+    /* height: auto; */
+    /* height: 64px; */
+/* } */
+
+/* .navbar {
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -58,18 +78,49 @@ body {
     letter-spacing: 8px;
 
     color: hsl(0, 0%, 98%);
+} */
+
+
+/* Media Queries */
+
+
+/* Colors for light theme */
+.all-colors {
+    background-color: hsl(0, 0%, 98%);
+    background-color: hsl(236, 33%, 92%);
+    background-color: hsl(233, 11%, 84%);
+    background-color: hsl(236, 9%, 61%);
+    background-color: hsl(235, 19%, 35%);
 }
 
-.color--mode {
-    height: 32px;
-    width: 32px;
-
-    background: url(./assets/images/icon-moon.svg);
-    background-repeat: no-repeat;
-    background-position: center;
+/* Colors for dark theme */
+.all-colors {
+    background-color: hsl(235, 24%, 19%);
+    background-color: hsl(234, 39%, 85%);
+    background-color: hsl(236, 33%, 92%);
+    background-color: hsl(234, 11%, 52%);
+    background-color: hsl(233, 14%, 35%);
+    background-color: hsl(237, 14%, 26%);
 }
 
-.input--field {
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* .input--field {
     width: 100%;
     height: 64px;
     background: hsl(0, 0%, 98%);
@@ -81,9 +132,9 @@ body {
     justify-content: flex-start;
 
     margin-bottom: 24px;
-}
+} */
 
-.input--Main {
+/* .input--Main {
     background: hsl(0, 0%, 98%);
     height: 100%;
     width: 80%;
@@ -101,9 +152,9 @@ body {
     font-size: 18px;
 
     color: hsl(236, 9%, 61%);
-}
+} */
 
-.div-main {
+/* .div-main {
     width: 100%;
     height: 64px;
 
@@ -117,19 +168,19 @@ body {
     border: none;
     border-top: 1px solid hsl(233, 11%, 84%);
     border-bottom: 1px solid hsl(233, 11%, 84%);
-}
+} */
 
 /* .div-main:first-child {
     border-top-left-radius: 5px;
     border-top-right-radius: 5px;
 } */
 
-.unique:first-child {
+/* .unique:first-child {
     border-top-left-radius: 5px;
     border-top-right-radius: 5px;
-}
+} */
 
-.div--tasks {
+/* .div--tasks {
     flex-grow: 1;
     display: flex;
     align-items: center;
@@ -137,18 +188,14 @@ body {
 
     padding: 0;
     margin: 0;
-}
+} */
 
-.completed--task {
+/* .completed--task {
     text-decoration: line-through;
     color: hsl(233, 14%, 35%);
-}
+} */
 
-.note {
-    transition: transform 0.2s ease;
-}
-
-.button__delete {
+/* .button__delete {
     border: none;
     background: none;
     margin-left: auto;
@@ -159,9 +206,9 @@ body {
 
 .button__delete:hover {
     opacity: 1;
-}
+} */
 
-.checkbox--label {
+/* .checkbox--label {
     border: 1px solid hsl(235, 19%, 35%);
     background-color: transparent;
     width: 23px;
@@ -184,9 +231,9 @@ body {
     background-size: 50%, 100%;
 
     border: none;
-}
+} */
 
-.add--button {
+/* .add--button {
     width: 23px;
     height: 23px;
     border-radius: 50%;
@@ -199,16 +246,16 @@ body {
     transition: border 0.3s ease;
 
     margin-left: 30px;
-}
+} */
 
-.add--button:hover,
-.checkbox--label:hover {
+/* .add--button:hover, */
+/* .checkbox--label:hover {
     box-shadow: inset 0 0 0 1px transparent, inset 0 0 0 1.2px #57ddff, inset 0 0 0 1.5px #c058f3, inset 0 0 0 1px rgba(0,0,0,0.5);
-    /* background-image: linear-gradient(45deg, #57ddff, #c058f3); */
-}
+} */
+/* background-image: linear-gradient(45deg, #57ddff, #c058f3); */
 
 
-.footer-main {
+/* .footer-main {
     height: 50px;
     width: 100%;
 
@@ -264,34 +311,28 @@ body {
 
     color: hsl(236, 9%, 61%);
     font-weight: 400;
-}
+} */
 
 /* Dark Mode */
 
-.color--mode-dark {
-    background: url(./assets/images/icon-sun.svg);
-    background-repeat: no-repeat;
-    background-position: center;
-}
-
-.input--field-dark {
+/* .input--field-dark {
     background-color: hsl(235, 24%, 19%);
 }
 
 .input--Main-dark {
     background-color: hsl(235, 24%, 19%);
     color: hsl(234, 39%, 85%);
-}
+} */
 
-.div-main-dark {
+/* .div-main-dark {
     background-color: hsl(235, 24%, 19%);
     color: hsl(234, 39%, 85%);
 
     border-top: 1px solid hsl(235, 19%, 35%);
     border-bottom: 1px solid hsl(235, 19%, 35%);
-}
+} */
 
-.footer-main--dark {
+/* .footer-main--dark {
     background-color: hsl(235, 24%, 19%);
     color: hsl(234, 39%, 85%);
 
@@ -300,39 +341,16 @@ body {
 
 .footer--last--dark {
     color: hsl(234, 39%, 85%);
-}
+} */
 
-.completed--task--dark {
+/* .completed--task--dark {
     text-decoration: line-through;
     color: hsl(234, 39%, 85%);
-}
+} */
 
-.all--dark:hover,
+/* .all--dark:hover,
 .active--dark:hover,
 .complete--dark:hover,
 .clean--con--dark:hover {
     color: hsl(0, 0%, 98%);
-}
-
-/* Media Queries */
-
-
-
-/* Colors for light theme */
-.all-colors {
-    background-color: hsl(0, 0%, 98%);
-    background-color: hsl(236, 33%, 92%);
-    background-color: hsl(233, 11%, 84%);
-    background-color: hsl(236, 9%, 61%);
-    background-color: hsl(235, 19%, 35%);
-}
-
-/* Colors for dark theme */
-.all-colors {
-    background-color: hsl(235, 24%, 19%);
-    background-color: hsl(234, 39%, 85%);
-    background-color: hsl(236, 33%, 92%);
-    background-color: hsl(234, 11%, 52%);
-    background-color: hsl(233, 14%, 35%);
-    background-color: hsl(237, 14%, 26%);
-}
+} */
