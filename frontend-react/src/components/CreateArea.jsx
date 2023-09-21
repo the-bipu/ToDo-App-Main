@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 
+import './CreateArea.scss';
+
 function CreateArea(props) {
 
   const {onAdd, dark, toggleDarkMode, isChecked, handleCheckboxChange } = props;

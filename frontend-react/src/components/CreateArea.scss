@@ -1,0 +1,71 @@
+.input--field {
+    width: 100%;
+    height: 64px;
+    background: hsl(0, 0%, 98%);
+
+    border-radius: 5px;
+
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+
+    margin-bottom: 24px;
+
+    .input--Main {
+        background: hsl(0, 0%, 98%);
+        height: 100%;
+        width: 80%;
+    
+        font-family: 'Josefin Sans', sans-serif;
+        font-size: 18px;
+        margin-left: 24px;
+        border-radius: 5px;
+    
+        border: none;
+        outline: none;
+    }
+    
+    ::placeholder {
+        font-family: 'Josefin Sans', sans-serif;
+        font-size: 18px;
+    
+        color: hsl(236, 9%, 61%);
+    }
+
+    .add--button {
+        width: 23px;
+        height: 23px;
+        border-radius: 50%;
+        border: 1px solid hsl(235, 19%, 35%);
+        background: transparent;
+        cursor: pointer;
+    
+        position: relative;
+        overflow: hidden;
+        transition: border 0.3s ease;
+    
+        margin-left: 30px;
+    }
+    
+    .add--button:hover {
+        box-shadow: inset 0 0 0 1px transparent, inset 0 0 0 1.2px #57ddff, inset 0 0 0 1.5px #c058f3, inset 0 0 0 1px rgba(0,0,0,0.5);
+    }
+
+    .input--Main-dark {
+        background-color: hsl(235, 24%, 19%);
+        color: hsl(234, 39%, 85%);
+    }
+
+    @media screen and (max-width: 600px) {
+        height: 48px;
+        font-size: 14px;
+
+        ::placeholder{
+            font-size: 16px;
+        }
+    }
+}
+
+.input--field-dark {
+    background-color: hsl(235, 24%, 19%);
+}
