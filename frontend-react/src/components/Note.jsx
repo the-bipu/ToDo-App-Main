@@ -1,6 +1,8 @@
 import React from "react";
 import { useDrag, useDrop } from 'react-dnd';
 
+import './Note.scss';
+
 const Note = ({ id, title, onDelete, dark, isChecked, handleCheckboxChange, index, moveNote }) => {
   const [, ref, preview] = useDrag({
       type: 'NOTE',
