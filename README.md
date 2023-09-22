@@ -42,15 +42,15 @@ Users should be able to:
 
 - Desktop Light
 
-![](./frontend-react/screenshots/desktop--light.png)
+![](./screenshots/desktop--light.png)
 
 - Desktop Dark
 
-![](./frontend-react/screenshots/desktop--dark.png)
+![](./screenshots/desktop--dark.png)
 
 - Mobile Light / Dark
 
-![](./frontend-react/screenshots/mobile--light.png)     ![](./frontend-react/screenshots/mobile--dark.png)
+![](./screenshots/mobile--light.png)     ![](./screenshots/mobile--dark.png)
 
 ### Links
 
