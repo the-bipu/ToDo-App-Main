@@ -27,7 +27,7 @@ export default function Main(){
         const mediaQuery = window.matchMedia("(max-width: 600px)");
     
         const applyDarkStyles = () => {
-            document.body.style.backgroundImage = dark ? 'url(./assets/images/bg-desktop-dark.jpg)' : '';
+            document.body.style.backgroundImage = dark ? 'url(./assets/images/bg-desktop-dark.jpg)' : 'url(./assets/images/bg-desktop-light.jpg)';
             document.body.style.backgroundColor = dark ? 'hsl(235, 21%, 11%)' : 'hsl(236, 33%, 92%)';
             document.body.style.backgroundRepeat = 'no-repeat';
             document.body.style.backgroundSize = '100% 44vh';
@@ -35,9 +35,7 @@ export default function Main(){
 
         const applyMobileStyles = () => {
             if (!dark) {
-                document.body.style.backgroundImage = dark 
-                    ? 'url(./assets/images/bg-mobile-dark.jpg)' 
-                    : 'url(./assets/images/bg-mobile-light.jpg)';
+                document.body.style.backgroundImage = 'url(./assets/images/bg-mobile-' + (dark ? 'dark' : 'light') + '.jpg)';
                 document.body.style.backgroundColor = dark ? 'hsl(235, 21%, 11%)' : 'hsl(236, 33%, 92%)';
                 // document.body.style.backgroundImage = 'url(./assets/images/bg-mobile-dark.jpg)';
                 document.body.style.backgroundRepeat = 'no-repeat';
@@ -46,16 +44,18 @@ export default function Main(){
         };
     
         applyDarkStyles(); // Apply styles initially
-        applyMobileStyles();
-    
+        if (mediaQuery.matches) {
+            applyMobileStyles(); // Apply mobile styles initially if window is less than 600px wide
+        }
+
         const mediaQueryListener = (event) => {
             if (event.matches) {
-                applyDarkStyles();
+                applyMobileStyles(); // Apply mobile styles if window becomes less than 600px wide
             } else {
-                applyMobileStyles();
+                applyDarkStyles(); // Apply desktop styles if window becomes 600px wide or wider
             }
         };
-    
+        
         mediaQuery.addEventListener('change', mediaQueryListener);
     
         return () => {
