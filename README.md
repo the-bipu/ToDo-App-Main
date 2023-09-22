@@ -1,6 +1,6 @@
 # Frontend Mentor - Todo app
 
-![Design preview for the Todo app coding challenge](./design/desktop-preview.jpg)
+![Design preview for the Todo app coding challenge](./frontend-react/public/assets/design/desktop-preview.jpg)
 
 # Frontend Mentor - Todo app solution
 
@@ -40,20 +40,22 @@ Users should be able to:
 
 ### Screenshot
 
-![](./screenshot.jpg)
+- Desktop Light
 
-Add a screenshot of your solution. The easiest way to do this is to use Firefox to view your project, right-click the page and select "Take a Screenshot". You can choose either a full-height screenshot or a cropped one based on how long the page is. If it's very long, it might be best to crop it.
+![](./frontend-react/screenshots/desktop--light.png)
 
-Alternatively, you can use a tool like [FireShot](https://getfireshot.com/) to take the screenshot. FireShot has a free option, so you don't need to purchase it. 
+- Desktop Dark
 
-Then crop/optimize/edit your image however you like, add it to your project, and update the file path in the image above.
+![](./frontend-react/screenshots/desktop--dark.png)
 
-**Note: Delete this note and the paragraphs above when you add your screenshot. If you prefer not to add a screenshot, feel free to remove this entire section.**
+- Mobile Light / Dark
+
+![](./frontend-react/screenshots/mobile--light.png)     ![](./frontend-react/screenshots/mobile--dark.png)
 
 ### Links
 
-- Solution URL: [Add solution URL here](https://your-solution-url.com)
-- Live Site URL: [Add live site URL here](https://your-live-site-url.com)
+- Solution URL: [https://github.com/the-bipu/ToDo-App-Main](https://github.com/the-bipu/ToDo-App-Main)
+- Live Site URL: [https://todo-app-the-bipu.netlify.app/](https://todo-app-the-bipu.netlify.app/)
 
 ## My process
 
@@ -65,76 +67,22 @@ Then crop/optimize/edit your image however you like, add it to your project, and
 - CSS Grid
 - Mobile-first workflow
 - [React](https://reactjs.org/) - JS library
-- [Next.js](https://nextjs.org/) - React framework
-- [Styled Components](https://styled-components.com/) - For styles
-
-**Note: These are just examples. Delete this note and replace the list above with your own choices**
+- [Sanity](https://www.sanity.io/) - For Storing Data
+- [Sass](https://sass-lang.com/) - For styles
 
 ### What I learned
 
-Use this section to recap over some of your major learnings while working through this project. Writing these out and providing code samples of areas you want to highlight is a great way to reinforce your own knowledge.
-
-To see how you can add code snippets, see below:
-
-```html
-<h1>Some HTML code I'm proud of</h1>
-```
-```css
-.proud-of-this-css {
-  color: papayawhip;
-}
-```
-```js
-const proudOfThisFunc = () => {
-  console.log('🎉')
-}
-```
-
-If you want more help with writing markdown, we'd recommend checking out [The Markdown Guide](https://www.markdownguide.org/) to learn more.
-
-**Note: Delete this note and the content within this section and replace with your own learnings.**
-
 ### Continued development
 
-Use this section to outline areas that you want to continue focusing on in future projects. These could be concepts you're still not completely comfortable with or techniques you found useful that you want to refine and perfect.
-
-**Note: Delete this note and the content within this section and replace with your own plans for continued development.**
+This project is fully complete as per the given challenges but i would like to use database for it and make it a fully-fledged website where the user can store it's Todos by logging in.
 
 ### Useful resources
 
-- [Example resource 1](https://www.example.com) - This helped me for XYZ reason. I really liked this pattern and will use it going forward.
-- [Example resource 2](https://www.example.com) - This is an amazing article which helped me finally understand XYZ. I'd recommend it to anyone still learning this concept.
-
-**Note: Delete this note and replace the list above with resources that helped you during the challenge. These could come in handy for anyone viewing your solution or for yourself when you look back on this project in the future.**
-
 ## Author
 
-- Website - [Add your name here](https://www.your-site.com)
-- Frontend Mentor - [@yourusername](https://www.frontendmentor.io/profile/yourusername)
-- Twitter - [@yourusername](https://www.twitter.com/yourusername)
-
-**Note: Delete this note and add/remove/edit lines above based on what links you'd like to share.**
+- Github - [The-Bipu](https://github.com/the-bipu)
+- Frontend Mentor - [@the-bipu](https://www.frontendmentor.io/profile/the-bipu)
 
 ## Acknowledgments
 
-This is where you can give a hat tip to anyone who helped you out on this project. Perhaps you worked in a team or got some inspiration from someone else's solution. This is the perfect place to give them some credit.
-
-```
-const initialCheckedState = {};
-            data.forEach(item => {
-                initialCheckedState[item._id] = item.isChecked;
-                console.log(initialCheckedState[item._id]);
-            });
-
-            setIsChecked(initialCheckedState);
-            // const isCheckedState = data.reduce((acc, item) => {
-            //     acc[item._id] = item.isChecked || false;
-            //     return acc;
-            // }, {});
-            // setIsChecked(isCheckedState);
-
-            // setNotes(data.map((item, index) => ({ ...item, id: index, isChecked: item.isChecked || false })));
-            const initialNotesState = data.map((item, index) => ({ ...item, id: index }));
-            setNotes(initialNotesState);
-            setLoading(false);
-```
+Until now i haven't seen the solution of any other person but i use chatGPT a lot when i need to debug a code section, or when i have to understand a concept.
