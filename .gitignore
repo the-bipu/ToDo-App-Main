@@ -12,6 +12,7 @@
 
 # production
 /build
+/frontend-react/build
 
 # misc
 .DS_Store
