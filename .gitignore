@@ -3,6 +3,8 @@
 # dependencies
 /frontend-react/node_modules
 /frontend-react/.env
+/backend/node_modules
+/backend/config.js
 /node_modules
 /.pnp
 .pnp.js
