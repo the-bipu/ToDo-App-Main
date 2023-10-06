@@ -42,4 +42,22 @@ router.post('/', async (req, res) => {
     }
 });
 
+// Route for deleting a todo item
+router.delete('/:id', async (req, res) => {
+    try {
+        const { id } = req.params;
+
+        // Find the todo item by ID and delete it
+        const todo = await Todo.findByIdAndDelete(id);
+
+        if (!todo) {
+            return res.status(404).json({ message: 'Todo not found' });
+        }
+
+        res.json({ message: 'Todo deleted successfully' });
+    } catch (error) {
+        res.status(500).json({ message: error.message });
+    }
+});
+
 export default router;
