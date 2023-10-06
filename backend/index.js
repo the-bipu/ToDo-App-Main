@@ -1,5 +1,5 @@
 import express, { request, response } from "express";
-// import cors from 'cors'; // Add this import
+import cors from 'cors'; // Add this import
 import { PORT, URI } from "./config.js";
 import mongoose from 'mongoose';
 import todoRoutes from './routes/todoRoute.js';
@@ -9,7 +9,7 @@ app.use(express.json());
 
 // Middleware for handling cors origin
 // Method 1: allow all origins with default of cors(*)
-// app.use(cors());
+app.use(cors());
 
 
 app.get('/', (request, response) => {
