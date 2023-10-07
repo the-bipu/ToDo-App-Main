@@ -42,27 +42,24 @@ router.post('/', async (req, res) => {
     }
 });
 
-// Route for editing a todo item
+// Update isChecked and other properties for a specific todo item
 router.put('/:id', async (req, res) => {
     try {
         const { id } = req.params;
         const { title, isChecked } = req.body;
 
         // Find the todo item by ID
-        const todo = await Todo.findById(id);
-
-        if (!todo) {
+        const updatedTodo = await Todo.findByIdAndUpdate(
+            id,
+            { title, isChecked },
+            { new: true }
+        );
+          
+        if (!updatedTodo) {
             return res.status(404).json({ message: 'Todo not found' });
         }
-
-        // Update the todo item
-        todo.title = title || todo.title;
-        todo.isChecked = isChecked || todo.isChecked;
-
-        // Save the updated todo to the database
-        await todo.save();
-
-        res.json(todo);
+          
+        res.json(updatedTodo);
     } catch (error) {
         res.status(500).json({ message: error.message });
     }
