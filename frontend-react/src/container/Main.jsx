@@ -134,24 +134,28 @@ export default function Main(){
     }
 
     const handleCheckboxChange = (id) => {
-        setIsChecked(prev => ({
-            ...prev,
-            [id]: !prev[id]
-        }));
+        console.log('handleCheckboxChange called with id:', id);
+        console.log('isChecked:', isChecked);
 
+        setIsChecked(prev => {
+            const newState = { ...prev, [id]: !prev[id] };
+            console.log('New isChecked state:', newState);
+            return newState;
+        });        
+    
         const documentId = notes.find(note => note.id === id)._id;
-
+    
         axios.put(`http://localhost:5555/todos/${documentId}`, { isChecked: !isChecked[id] })
             .then(() => {
                 console.log(`Successfully updated isChecked for document with ID ${documentId} in MongoDB.`);
                 handleSectionToggle(activeSection);
-
+    
                 if (isChecked[id]) {
                     setUncheckedNotesCount(prevCount => prevCount + 1);
                 } else {
                     setUncheckedNotesCount(prevCount => prevCount - 1);
                 }
-
+    
                 setNotes(prevNotes => prevNotes.map(note =>
                     note.id === id ? { ...note, isChecked: !isChecked[id] } : note
                 ));
