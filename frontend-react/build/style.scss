@@ -1,0 +1,80 @@
+@import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@400;700&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Josefin Sans', sans-serif;
+    font-size: 18px;
+
+    width: 1440px;
+    height: 800px;
+
+    display: flex;
+    justify-content: center;
+
+    background-image: url(./assets/images/bg-desktop-light.jpg);
+    background-repeat: no-repeat;
+    background-size: contain;
+
+    /* background-color: hsl(0, 0%, 98%); */
+    background-color: hsl(236, 33%, 92%);
+
+    .attribution { 
+        font-size: 11px; 
+        text-align: center; 
+    }
+    
+    .attribution a { 
+        color: hsl(228, 45%, 44%); 
+    }
+    
+    .container {
+        /* width: 37.5vw; */
+        width: 540px;
+        height: auto;
+        /* height: 64px; */
+    }
+    
+    .navbar {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+    
+        justify-content: space-between;
+    
+        margin-top: 76px;
+        margin-bottom: 46px;
+    }
+    
+    .heading {
+        text-transform: uppercase;
+        font-size: 2rem;
+        font-weight: 700;
+        letter-spacing: 8px;
+    
+        color: hsl(0, 0%, 98%);
+    }
+    
+    .color--mode {
+        height: 32px;
+        width: 32px;
+    
+        background: url(./assets/images/icon-moon.svg);
+        background-repeat: no-repeat;
+        background-position: center;
+    }
+    
+    .color--mode-dark {
+        background: url(./assets/images/icon-sun.svg);
+        background-repeat: no-repeat;
+        background-position: center;
+    }
+    
+    .note {
+        transition: transform 0.2s ease;
+    }
+}
