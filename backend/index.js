@@ -20,11 +20,11 @@ app.get('/', (request, response) => {
 app.use('/todos', todoRoutes);
 
 mongoose
-    .connect(URI)
+    .connect(process.env.URI)
     .then(() => {
         console.log('App connected to database.');
         app.listen(PORT, () => {
-            console.log(`App is listening to Port: ${PORT}`);
+            console.log(`App is listening to Port: ${process.env.PORT}`);
         });
     })
     .catch((error) => {
