@@ -1,6 +1,6 @@
 import express, { request, response } from "express";
 import cors from 'cors'; // Add this import
-import { PORT, URI } from "./config.js";
+// import { PORT, URI } from "./config.js";
 import mongoose from 'mongoose';
 import todoRoutes from './routes/todoRoute.js';
 
