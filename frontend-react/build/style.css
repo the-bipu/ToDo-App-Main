@@ -1,0 +1,73 @@
+@import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@400;700&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Josefin Sans', sans-serif;
+    font-size: 18px;
+
+    /* width: 1440px; */
+    /* height: 800px; */
+    width: 100vw;
+    height: auto;
+
+    display: flex;
+    justify-content: center;
+
+    background-image: url(./assets/images/bg-desktop-light.jpg);
+    background-repeat: no-repeat;
+    background-size: 100% 44vh;
+
+    background-color: hsl(236, 33%, 92%);
+}
+
+.attribution { 
+    font-size: 11px; 
+    text-align: center; 
+}
+
+.attribution a { 
+    color: hsl(228, 45%, 44%); 
+}
+
+.color--mode {
+    height: 32px;
+    width: 32px;
+
+    background: url(./assets/images/icon-moon.svg);
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.color--mode-dark {
+    background: url(./assets/images/icon-sun.svg);
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.note {
+    transition: transform 0.2s ease;
+}
+
+/* Colors for light theme */
+.all-colors {
+    background-color: hsl(0, 0%, 98%);
+    background-color: hsl(236, 33%, 92%);
+    background-color: hsl(233, 11%, 84%);
+    background-color: hsl(236, 9%, 61%);
+    background-color: hsl(235, 19%, 35%);
+}
+
+/* Colors for dark theme */
+.all-colors {
+    background-color: hsl(235, 24%, 19%);
+    background-color: hsl(234, 39%, 85%);
+    background-color: hsl(236, 33%, 92%);
+    background-color: hsl(234, 11%, 52%);
+    background-color: hsl(233, 14%, 35%);
+    background-color: hsl(237, 14%, 26%);
+}
