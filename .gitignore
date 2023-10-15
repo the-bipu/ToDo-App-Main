@@ -14,8 +14,6 @@ Main2.jsx
 /coverage
 
 # production
-/build
-/frontend-react/build
 
 # misc
 .DS_Store
