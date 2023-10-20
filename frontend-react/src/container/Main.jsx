@@ -133,6 +133,23 @@ export default function Main(){
         }
     }
 
+    const [editData, setEditData] = useState(null);
+
+    const handleEditButtonClick = (id) => {
+        const noteToEdit = notes.find(note => note.id === id);
+        setEditData(noteToEdit);
+    }  
+
+    const onEdit = (id, newTitle) => {
+        const updatedNotes = [...notes];
+        const noteIndex = updatedNotes.findIndex(note => note.id === id);
+
+        if (noteIndex !== -1) {
+            updatedNotes[noteIndex].title = newTitle;
+            setNotes(updatedNotes);
+        }
+    }
+
     const handleCheckboxChange = (id) => {
         console.log('handleCheckboxChange called with id:', id);
         console.log('isChecked:', isChecked);
@@ -220,7 +237,7 @@ export default function Main(){
                 </div>
             </div>
 
-            <CreateArea onAdd={addNote} dark={dark} toggleDarkMode={toggleDarkMode} clearCompleted={clearCompleted} />
+            <CreateArea onAdd={addNote} editData={editData} dark={dark} toggleDarkMode={toggleDarkMode} clearCompleted={clearCompleted} />
 
             <DndProvider backend={HTML5Backend}>
                 <div>
@@ -231,6 +248,7 @@ export default function Main(){
                             id={noteItem.id}
                             title={noteItem.title}
                             onDelete={deleteNote}
+                            onEdit={onEdit}
                             dark={dark}
                             isChecked={isChecked}
                             handleCheckboxChange={handleCheckboxChange}
