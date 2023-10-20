@@ -1,16 +1,26 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 
 import './CreateArea.scss';
 
 function CreateArea(props) {
 
-  const {onAdd, dark, toggleDarkMode, isChecked, handleCheckboxChange } = props;
+  const {onAdd, dark, toggleDarkMode, isChecked, handleCheckboxChange, editData } = props;
 
   const [message, setMessage] = useState('');
 
   const [note, setNote] = useState({
     title: "",
   });
+
+  const [input, setInput] = useState("");
+
+  useEffect(() => {
+      if (editData) {
+          setInput(editData.title);
+      } else {
+          setInput("");
+      }
+  }, [editData]);
 
   function handleChange(event) {
     const { name, value } = event.target;
