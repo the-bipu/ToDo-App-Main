@@ -1,9 +1,9 @@
-import React from "react";
+import React,  { useState, useEffect } from "react";
 import { useDrag, useDrop } from 'react-dnd';
 
 import './Note.scss';
 
-const Note = ({ id, title, onDelete, dark, isChecked, handleCheckboxChange, index, moveNote }) => {
+const Note = ({ id, title, onDelete, onEdit, dark, isChecked, handleCheckboxChange, index, moveNote }) => {
   const [, ref, preview] = useDrag({
       type: 'NOTE',
       item: { index }
@@ -23,9 +23,29 @@ const Note = ({ id, title, onDelete, dark, isChecked, handleCheckboxChange, inde
       e.preventDefault();
   }
 
-  function handleClick() {
-    console.log("passed the id " + id);
+  // function handleDeleteButtonClick() {
+  //   console.log("passed the id " + id);
+  //   onDelete(id);
+  // }
+
+  const [isEditing, setIsEditing] = useState(false);
+  const [editedTitle, setEditedTitle] = useState(title);
+
+  const handleDeleteButtonClick = () => {
     onDelete(id);
+  }
+
+  const handleEditButtonClick = () => {
+    setIsEditing(true);
+  }
+
+  const handleSaveButtonClick = () => {
+    setIsEditing(false);
+    onEdit(id, editedTitle);
+  }
+
+  const handleInputChange = (e) => {
+    setEditedTitle(e.target.value);
   }
 
   return (
@@ -43,13 +63,46 @@ const Note = ({ id, title, onDelete, dark, isChecked, handleCheckboxChange, inde
               onClick={() => handleCheckboxChange(id)}
             /> 
             
-            <div className={`div--tasks ${isChecked[id] ? "completed--task" : ""}`}>
+            {/* <div className={`div--tasks ${isChecked[id] ? "completed--task" : ""}`}>
                 {title}
             </div>
 
-            <button className="button__delete" onClick={handleClick}>
-              <img className="cross__icon" src="../../assets/images/icon-cross.svg" alt="cross icon" />
+            <button className="button__edit" onClick={handleEditButtonClick}>
+              <img className="pencil__icon icons--button" src="../../assets/images/pencil--1.png" alt="pencil icon" />
             </button>
+
+            <button className="button__delete" onClick={handleDeleteButtonClick}>
+              <img className="cross__icon icons--button" src="../../assets/images/delete--1.png" alt="delete icon" />
+            </button> */}
+
+            {isEditing ? (
+              <input
+                type="text"
+                value={editedTitle}
+                onChange={handleInputChange}
+                autoFocus
+              />
+            ) : (
+              <div className={`div--tasks ${isChecked[id] ? "completed--task" : ""}`}>
+                  {title}
+              </div>
+            )}
+
+            {isEditing ? (
+              <button className="button__save" onClick={handleSaveButtonClick}>
+                Save
+              </button>
+            ) : (
+              <>
+                <button className="button__edit" onClick={handleEditButtonClick}>
+                  <img className="pencil__icon icons--button" src="../../assets/images/pencil--1.png" alt="pencil icon" />
+                </button>
+
+                <button className="button__delete" onClick={handleDeleteButtonClick}>
+                  <img className="cross__icon icons--button" src="../../assets/images/delete--1.png" alt="delete icon" />
+                </button>
+              </>
+            )}
           </div>
       </div>
   );
