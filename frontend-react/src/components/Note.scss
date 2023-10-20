@@ -59,13 +59,42 @@
         color: hsl(233, 14%, 35%);
     }
 
+    .button__edit {
+        width: 20px;
+        height: 20px;
+
+        border: none;
+        background: none;
+        margin-left: auto;
+        margin-right: .4rem;
+    
+        opacity: 0;
+
+        .pencil__icon {
+            width: 24px;
+            height: 24px;
+        }
+    }
+    
+    .button__edit:hover {
+        opacity: 1;
+    }
+
     .button__delete {
+        width: 20px;
+        height: 20px;
+
         border: none;
         background: none;
         margin-left: auto;
         margin-right: 1.2rem;
     
         opacity: 0;
+
+        .cross__icon {
+            width: 30px;
+            height: 30px;
+        }
     }
     
     .button__delete:hover {
