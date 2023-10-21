@@ -143,12 +143,22 @@ export default function Main(){
     const onEdit = (id, newTitle) => {
         const updatedNotes = [...notes];
         const noteIndex = updatedNotes.findIndex(note => note.id === id);
-
+    
         if (noteIndex !== -1) {
             updatedNotes[noteIndex].title = newTitle;
             setNotes(updatedNotes);
+    
+            const documentId = notes.find(note => note.id === id)._id;
+            
+            axios.put(`https://todo-listdb-tb.onrender.com/todos/${documentId}`, { title: newTitle })
+                .then(() => {
+                    console.log(`Successfully updated title for document with ID ${documentId} in MongoDB.`);
+                })
+                .catch(error => {
+                    console.error('Error updating title in MongoDB:', error);
+                });
         }
-    }
+    }    
 
     const handleCheckboxChange = (id) => {
         console.log('handleCheckboxChange called with id:', id);
