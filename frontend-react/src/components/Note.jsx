@@ -77,6 +77,7 @@ const Note = ({ id, title, onDelete, onEdit, dark, isChecked, handleCheckboxChan
 
             {isEditing ? (
               <input
+                className="edit__input"
                 type="text"
                 value={editedTitle}
                 onChange={handleInputChange}
