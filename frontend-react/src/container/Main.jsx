@@ -76,7 +76,7 @@ export default function Main(){
 
     useEffect(() => {
         // Fetch data from MongoDB
-        axios.get('https://todo-listdb-tb.onrender.com/todos')
+        axios.get('https://todoapp-production-backend.up.railway.app/todos')
             .then(response => {
                 const notesWithCheck = response.data.map((item, index) => ({ ...item, id: index, isChecked: item.isChecked }));
                 const initialCheckedState = {};
@@ -116,7 +116,7 @@ export default function Main(){
                 isChecked: false
             };
 
-            axios.post('https://todo-listdb-tb.onrender.com/todos', data)
+            axios.post('https://todoapp-production-backend.up.railway.app/todos', data)
                 .then(response => {
                     setIsFormSubmitted(true);
                     setNotes(prevNotes => [...prevNotes, { ...response.data, id: response.data._id, isChecked: false }]);
@@ -150,7 +150,7 @@ export default function Main(){
     
             const documentId = notes.find(note => note.id === id)._id;
             
-            axios.put(`https://todo-listdb-tb.onrender.com/todos/${documentId}`, { title: newTitle })
+            axios.put(`https://todoapp-production-backend.up.railway.app/todos/${documentId}`, { title: newTitle })
                 .then(() => {
                     console.log(`Successfully updated title for document with ID ${documentId} in MongoDB.`);
                 })
@@ -172,7 +172,7 @@ export default function Main(){
     
         const documentId = notes.find(note => note.id === id)._id;
     
-        axios.put(`https://todo-listdb-tb.onrender.com/todos/${documentId}`, { isChecked: !isChecked[id] })
+        axios.put(`https://todoapp-production-backend.up.railway.app/todos/${documentId}`, { isChecked: !isChecked[id] })
             .then(() => {
                 console.log(`Successfully updated isChecked for document with ID ${documentId} in MongoDB.`);
                 handleSectionToggle(activeSection);
@@ -194,7 +194,7 @@ export default function Main(){
 
     const deleteNote = (id) => {
         const documentId = notes.find(note => note.id === id)._id;
-        axios.delete(`https://todo-listdb-tb.onrender.com/todos/${documentId}`)
+        axios.delete(`https://todoapp-production-backend.up.railway.app/todos/${documentId}`)
             .then(() => {
                 console.log(`Successfully deleted document with ID ${id} from MongoDB.`);
                 setUncheckedNotesCount(prevCount => prevCount - 1);
@@ -211,7 +211,7 @@ export default function Main(){
         completedNotes.forEach(note => {
             const documentId = note._id;
 
-            axios.delete(`https://todo-listdb-tb.onrender.com/todos/${documentId}`)
+            axios.delete(`https://todoapp-production-backend.up.railway.app/todos/${documentId}`)
                 .then(() => {
                     console.log(`Successfully deleted completed document with ID ${note.id} from MongoDB.`);
 
